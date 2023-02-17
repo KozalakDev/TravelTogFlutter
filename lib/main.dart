@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project_1/routes.dart';
 import 'package:team_project_1/screens/add_screen.dart';
 import 'screens/home_screen.dart';
 
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        routes: routes,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: AddScreen());
+        home: HomeScreen());
   }
 }

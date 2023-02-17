@@ -1,6 +1,8 @@
 // import 'package:ciceksepeti_database_management/screens/authentication/auth_screen.dart';
 
-// const authRouteName = '/auth';
+import 'package:team_project_1/screens/add_screen.dart';
+
+const addRouteName = '/add';
 // const parcelTrackRouteName = '/parcelTrack';
 // const notificationsRouteName = '/notifications';
 // // const liveHelpRouteName = '/liveHelp';
@@ -9,6 +11,6 @@
 // const discountsRouteName = '/discounts';
 // // const rateApp = '/liveHelp';
 
-// final routes = {
-//   authRouteName: (context) => AuthScreen(),
-// };
+final routes = {
+  addRouteName: (context) => AddScreen(),
+};
