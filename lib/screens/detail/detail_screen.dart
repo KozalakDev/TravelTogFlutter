@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:team_project_1/screens/components/image_slider.dart';
+import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(top: 30),
-              child: ImageSlider(),
+              // child: CarouselSlider(),
             ),
             Column(
               children: [

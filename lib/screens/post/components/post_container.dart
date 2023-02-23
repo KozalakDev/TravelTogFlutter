@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:team_project_1/screens/components/image_slider.dart';
-import 'package:team_project_1/screens/detail_screen.dart';
+import 'package:team_project_1/screens/post/components/image_slider.dart';
+import 'package:team_project_1/screens/detail/detail_screen.dart';
 import 'package:team_project_1/consts.dart' as constants;
 import 'package:team_project_1/size_config.dart';
 
