@@ -8,8 +8,7 @@ import 'package:team_project_1/screens/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen
-({super.key});
+  const DetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +62,14 @@ class DetailScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Column(
-                children: const [
-                  RatingListTile(text: "Food"),
-                  RatingListTile(text: "Staying"),
-                  RatingListTile(text: "Activities"),
-                  RatingListTile(text: "Transportation"),
-                  RatingListTile(text: "Nature"),
-                  RatingListTile(text: "Pricing"),
+                children: [
+                  RatingListTile(text: "Food", disable: false, rate: 5,),
+                  RatingListTile(text: "Staying", disable: false, rate: 5),
+                  RatingListTile(text: "Activities", disable: false, rate: 5),
+                  RatingListTile(
+                      text: "Transportation", disable: false, rate: 5),
+                  RatingListTile(text: "Nature", disable: false, rate: 5),
+                  RatingListTile(text: "Pricing", disable: false, rate: 5),
                 ],
               ),
             )

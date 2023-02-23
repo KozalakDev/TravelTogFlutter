@@ -1,6 +1,6 @@
 // import 'package:ciceksepeti_database_management/screens/authentication/auth_screen.dart';
 
-import 'package:team_project_1/screens/add_screen.dart';
+import 'package:team_project_1/screens/add/add_screen.dart';
 
 const addRouteName = '/add';
 // const parcelTrackRouteName = '/parcelTrack';

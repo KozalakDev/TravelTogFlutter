@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:team_project_1/size_config.dart';
 
 class ImageSlider extends StatelessWidget {
   const ImageSlider({
@@ -9,46 +10,30 @@ class ImageSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      items: [
-        Container(
-          height: 10,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/1.png"),
-              filterQuality: FilterQuality.high,
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/2.png"),
-                filterQuality: FilterQuality.high),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/3.png"),
-                filterQuality: FilterQuality.high),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/4.png"),
-                filterQuality: FilterQuality.high),
-          ),
-        ),
-      ],
+      items: [1, 2, 3, 4].map((e) {
+        return Builder(
+          builder: (context) {
+            return ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: Image.asset(
+                "assets/images/$e.png",
+                fit: BoxFit.fill,
+                width: SizeConfig.screenWidth! * 3 / 5,
+              ),
+              // filterQuality: FilterQuality.high,
+            );
+          },
+        );
+      }).toList(),
       options: CarouselOptions(
-        autoPlayCurve: Curves.easeOutQuart,
-        enlargeFactor: 0.3,
-        enlargeCenterPage: true,
-        pauseAutoPlayInFiniteScroll: false,
-        viewportFraction: 0.8,
-        aspectRatio: 10 / 10,
-        autoPlay: true,
+        // clipBehavior: Clip.hardEdge,
+        viewportFraction: 1,
+        aspectRatio: 4 / 3,
+        // autoPlayCurve: Curves.easeOutQuart,
+        // enlargeFactor: 0.3,
+        // enlargeCenterPage: true,
+        // pauseAutoPlayInFiniteScroll: false,
+        // autoPlay: true,
       ),
     );
   }
