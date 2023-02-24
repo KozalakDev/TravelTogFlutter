@@ -37,6 +37,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   google_fonts: ^4.0.3
   http: ^0.13.5
+  image_cropper: ^3.0.1
   image_picker: ^0.8.6+1
   like_button: ^2.0.5
   percent_indicator: ^4.2.2

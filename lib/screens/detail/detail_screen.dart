@@ -8,7 +8,16 @@ import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  DetailScreen({super.key});
+
+  final Map<String, double> ratingsMap = {
+    'Food': 4.0,
+    'Staying': 8.0,
+    'Activites': 6.0,
+    'Transportation': 9.0,
+    'Nature': 8.0,
+    'Pricing': 5.0
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +69,16 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 10),
               child: Column(
-                children: [
-                  RatingListTile(text: "Food", disable: false, rate: 5,),
-                  RatingListTile(text: "Staying", disable: false, rate: 5),
-                  RatingListTile(text: "Activities", disable: false, rate: 5),
-                  RatingListTile(
-                      text: "Transportation", disable: false, rate: 5),
-                  RatingListTile(text: "Nature", disable: false, rate: 5),
-                  RatingListTile(text: "Pricing", disable: false, rate: 5),
-                ],
-              ),
+                  children: ratingsMap.entries.map((entry) {
+                return RatingListTile(
+                  text: entry.key,
+                  disable: false,
+                  rate: entry.value / 2,
+                  
+                );
+              }).toList()),
             )
           ],
         ),

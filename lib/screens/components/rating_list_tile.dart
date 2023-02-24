@@ -25,6 +25,7 @@ class RatingListTile extends StatelessWidget {
           style: GoogleFonts.montserrat(fontSize: 15),
         ),
         trailing: RatingBar(
+            allowHalfRating: true,
             ignoreGestures: disable,
             initialRating: rate ?? 0,
             itemSize: 30,

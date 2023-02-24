@@ -17,8 +17,8 @@ class ImageSlider extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: Image.asset(
                 "assets/images/$e.png",
-                fit: BoxFit.fill,
-                width: SizeConfig.screenWidth! * 3 / 5,
+                fit: BoxFit.cover,
+                width: SizeConfig.screenWidth! * 3.5 / 5 - 10,
               ),
               // filterQuality: FilterQuality.high,
             );
