@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
 import 'package:team_project_1/services/db_service.dart';
 
+import 'components/location_picker.dart';
 import 'components/rate_column.dart';
 
 class AddScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _AddScreenState extends State<AddScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: SafeArea(
         child: ListView(
@@ -108,7 +109,7 @@ class _AddScreenState extends State<AddScreen> {
                           controller: titleController,
                           decoration: InputDecoration(
                               fillColor: Colors.grey..shade400,
-                              contentPadding: EdgeInsets.all(10),
+                              contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
                                   borderSide:
@@ -137,7 +138,7 @@ class _AddScreenState extends State<AddScreen> {
                             style: GoogleFonts.montserrat(
                                 fontWeight: FontWeight.w600, fontSize: 20),
                           ),
-                          // subtitle: CSCPicker(),
+                          // subtitle: const LocationPicker(),
                         ),
                         const RateColumn(),
                         const SizedBox(
