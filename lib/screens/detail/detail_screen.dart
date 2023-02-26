@@ -5,8 +5,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:team_project_1/consts.dart';
 import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
+
+import 'components/ratings_column.dart';
 
 class DetailScreen extends StatelessWidget {
   DetailScreen({super.key});
@@ -71,15 +74,7 @@ class DetailScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: Column(
-                  children: ratingsMap.entries.map((entry) {
-                return RatingBarIndicator(
-                  itemBuilder: (context, index) => Container(),
-                  // text: entry.key,
-                  // disable: false,
-                  // rate: entry.value / 2,
-                );
-              }).toList()),
+              child: RatingsColumn(ratingsMap: ratingsMap),
             )
           ],
         ),
