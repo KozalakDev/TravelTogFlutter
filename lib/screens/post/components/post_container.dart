@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/detail/detail_screen.dart';
@@ -8,7 +9,10 @@ import 'interractions_row.dart';
 import 'linear_rate_bar.dart';
 
 class PostContainer extends StatelessWidget {
-  const PostContainer({super.key});
+  PostContainer({super.key});
+
+
+  final CarouselController carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +148,7 @@ class PostContainer extends StatelessWidget {
                         SizedBox(
                             width: SizeConfig.screenWidth! * 3.5 / 5 - 15,
                             // height: SizeConfig.screenHeight! / 4,
-                            child: const ImageSlider()),
+                            child: ImageSlider(carouselController:carouselController ,)),
                       ],
                     ),
                   ),

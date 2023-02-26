@@ -3,13 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:team_project_1/size_config.dart';
 
 class ImageSlider extends StatelessWidget {
-  const ImageSlider({
+  ImageSlider({
     super.key,
+    this.enlargeCenter,
+    this.vpf,
+    required this.carouselController,
   });
+
+  final bool? enlargeCenter;
+  final double? vpf;
+  CarouselController carouselController;
+
+  Function? nextPage() {
+    carouselController.nextPage();
+  }
+
+  Function? previousPage() {
+    carouselController.previousPage();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
+      carouselController: carouselController,
       items: [1, 2, 3, 4].map((e) {
         return Builder(
           builder: (context) {
@@ -27,11 +43,11 @@ class ImageSlider extends StatelessWidget {
       }).toList(),
       options: CarouselOptions(
         // clipBehavior: Clip.hardEdge,
-        viewportFraction: 1,
+        viewportFraction: this.vpf ?? 1,
         aspectRatio: 4 / 3,
         // autoPlayCurve: Curves.easeOutQuart,
         // enlargeFactor: 0.3,
-        // enlargeCenterPage: true,
+        enlargeCenterPage: enlargeCenter,
         // pauseAutoPlayInFiniteScroll: false,
         // autoPlay: true,
       ),

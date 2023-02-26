@@ -7,7 +7,7 @@ class RouteGenerator {
     switch (settings.name) {
       case '/add':
         return MaterialPageRoute(
-          builder: (_) => AddScreen(),
+          builder: (_) => const AddPostScreen(),
         );
         break;
 

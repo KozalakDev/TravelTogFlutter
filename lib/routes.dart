@@ -2,7 +2,7 @@
 
 import 'package:team_project_1/screens/add/add_screen.dart';
 
-const addRouteName = '/add';
+const addRouteName = '/addPost';
 // const parcelTrackRouteName = '/parcelTrack';
 // const notificationsRouteName = '/notifications';
 // // const liveHelpRouteName = '/liveHelp';
@@ -12,5 +12,5 @@ const addRouteName = '/add';
 // // const rateApp = '/liveHelp';
 
 final routes = {
-  addRouteName: (context) => AddScreen(),
+  addRouteName: (context) => const AddPostScreen(),
 };

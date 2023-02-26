@@ -1,11 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
+
 
 class DetailScreen extends StatelessWidget {
   DetailScreen({super.key});
@@ -18,6 +17,8 @@ class DetailScreen extends StatelessWidget {
     'Nature': 8.0,
     'Pricing': 5.0
   };
+
+  final CarouselController carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +41,38 @@ class DetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 30),
-              // child: CarouselSlider(),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Stack(
+                alignment: Alignment.centerRight,
+                children: [
+                  ImageSlider(
+                    carouselController: carouselController,
+                    enlargeCenter: true,
+                    vpf: 0.71,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      carouselController.nextPage();
+                    },
+                    icon: Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      size: 50,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                        onPressed: () {
+                          carouselController.previousPage();
+                        },
+                        icon: Icon(
+                          Icons.keyboard_arrow_left_rounded,
+                          size: 50,
+                        )),
+                  ),
+                ],
+              ),
             ),
             Column(
               children: [
@@ -75,7 +105,7 @@ class DetailScreen extends StatelessWidget {
                 return RatingListTile(
                   text: entry.key,
                   disable: false,
-                  rate: entry.value / 2,
+                  rate: entry.value / 2, changeRating: (String , double ) { },
                   
                 );
               }).toList()),

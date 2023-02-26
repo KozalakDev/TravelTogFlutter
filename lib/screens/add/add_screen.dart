@@ -1,47 +1,31 @@
-import 'dart:io';
-
-import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:team_project_1/consts.dart';
+import 'package:team_project_1/screens/add/components/location_picker.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
-import 'package:team_project_1/services/db_service.dart';
+import 'package:team_project_1/size_config.dart';
 
-import 'components/location_picker.dart';
-import 'components/rate_column.dart';
+import '../../services/db_service.dart';
 
-class AddScreen extends StatefulWidget {
-  AddScreen({Key? key}) : super(key: key);
+class AddPostScreen extends StatefulWidget {
+  const AddPostScreen({super.key});
 
   @override
-  State<AddScreen> createState() => _AddScreenState();
+  State<AddPostScreen> createState() => _AddPostScreenState();
 }
 
-class _AddScreenState extends State<AddScreen> {
-  final _formkey = GlobalKey<FormState>();
-  late TextEditingController titleController;
-  late TextEditingController descriptionController;
-
-  String title = '';
-  String description = '';
-
-  @override
-  void initState() {
-    super.initState();
-    titleController = TextEditingController();
-    descriptionController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    titleController.dispose();
-    descriptionController.dispose();
-
-    super.dispose();
-  }
-
+class _AddPostScreenState extends State<AddPostScreen> {
   List<XFile>? images = [];
+  final Map<String, double> ratingsMap = {
+    'Food': 0,
+    'Staying': 0,
+    'Activites': 0,
+    'Transportation': 0,
+    'Nature': 0,
+    'Pricing': 0
+  };
 
   Future pickImages() async {
     try {
@@ -50,115 +34,127 @@ class _AddScreenState extends State<AddScreen> {
       //   images!.addAll(imagesTemp);
       // }
       if (imagesTemp.isNotEmpty) {
-        setState(() => this.images = imagesTemp);
+        setState(() => images = imagesTemp);
       }
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
   }
 
+  void changeRating(String field, double value) {
+    ratingsMap[field] = value;
+  }
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController? textEditingController;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: SafeArea(
-        child: ListView(
-            shrinkWrap: true,
-            // physics: const NeverScrollableScrollPhysics(),
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Center(
-                  child: Form(
-                    key: _formkey,
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              pickImages();
-                            },
-                            child: const Text('Pick images')),
-                        const SizedBox(
-                          height: 20,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text('Create Post'),
+          titleTextStyle: Theme.of(context).textTheme.titleLarge,
+          iconTheme: const IconThemeData(color: Colors.black),
+        ),
+        body: SafeArea(
+            child: ListView(shrinkWrap: true, children: [
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Center(
+                child: Form(
+                  // key: _formkey,
+                  child: Column(
+                    children: [
+                      // Row(
+                      //   children: const [
+                      //     Text(
+                      //       'Pick images:',
+                      //       style: TextStyle(fontSize: 17),
+                      //     ),
+                      //     // Imagepicker(),
+                      //   ],
+                      // ),
+                      // Expanded(
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(8.0),
+                      //     child: GridView.builder(
+                      //         itemCount: images!.length,
+                      //         gridDelegate:
+                      //             SliverGridDelegateWithFixedCrossAxisCount(
+                      //                 crossAxisCount: 3),
+                      //         itemBuilder: (BuildContext context, int index) {
+                      //           return Image.file(
+                      //             File(images![index].path),
+                      //             fit: BoxFit.cover,
+                      //           );
+                      //         }),
+                      //   ),
+                      // ),
+                      TextFormField(
+                        controller: textEditingController,
+                        decoration: InputDecoration(
+                            // fillColor: Colors.amber,
+                            contentPadding: const EdgeInsets.all(10),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400)),
+                            hintText: "Create a great post today...",
+                            hintStyle: TextStyle(color: Colors.grey.shade400)),
+                        maxLines: 7,
+                      ),
+                      ListTile(
+                        contentPadding: const EdgeInsets.all(0),
+                        leading: const Icon(
+                          Icons.add_location_alt_outlined,
+                          color: Colors.black,
+                          size: 30,
                         ),
-                        images != null
-                            ? Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: images!
-                                      .map((e) => Image.file(
-                                            File(e.path),
-                                            height: 100,
-                                            width: 200,
-                                          ))
-                                      .toList(),
+                        title: Text(
+                          "Add Location",
+                          style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.w600, fontSize: 20),
+                        ),
+                        // subtitle: LocationPicker(),
+                      ),
+                      Column(
+                        children: [
+                          ...ratingsMap.entries
+                              .map((e) => RatingListTile(
+                                  text: e.key,
+                                  disable: false,
+                                  changeRating: changeRating))
+                              .toList(),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50)),
+                            width: SizeConfig.screenWidth! - 20,
+                            height: 50,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
                                 ),
-                              )
-                            : Container(),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: titleController,
-                          decoration: InputDecoration(
-                              fillColor: Colors.grey..shade400,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey..shade400)),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey..shade400)),
-                              hintText: "Create a great post today...",
-                              hintStyle:
-                                  TextStyle(color: Colors.grey..shade400)),
-                          maxLines: 7,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        ListTile(
-                          contentPadding: const EdgeInsets.all(0),
-                          leading: const Icon(
-                            Icons.add_location_alt_outlined,
-                            color: Colors.black,
-                            size: 30,
-                          ),
-                          title: Text(
-                            "Add Location",
-                            style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w600, fontSize: 20),
-                          ),
-                          // subtitle: const LocationPicker(),
-                        ),
-                        const RateColumn(),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        ElevatedButton(
-                            onPressed: () async {
-                              await DatabaseService().createPost(
-                                  titleController.text,
-                                  descriptionController.text,
-                                  images!);
-                            },
-                            child: const Text('Create Post')),
-                      ],
-                    ),
+                                backgroundColor: primaryColor,
+                              ),
+                              onPressed: () async {
+                                // await DatabaseService().createPost(
+                                //     textEditingController!.text, images!);
+                                print(ratingsMap);
+                              },
+                              child: const Text('Publish Post'),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ),
-              ),
-            ]),
-      ),
-    );
+              )),
+        ])));
   }
 }
