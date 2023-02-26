@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:team_project_1/consts.dart';
 
 class RatingListTile extends StatelessWidget {
   RatingListTile(
       {super.key,
       required this.text,
-      required this.rate,
       required this.disable,
-      this.changeRating});
+      required this.changeRating});
 
   final String text;
   double? rate = 0;
   final bool disable;
-  final Function(double)? changeRating;
+  final Function(String, double) changeRating;
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +25,27 @@ class RatingListTile extends StatelessWidget {
           style: GoogleFonts.montserrat(fontSize: 15),
         ),
         trailing: RatingBar(
-            allowHalfRating: true,
-            ignoreGestures: disable,
-            initialRating: rate ?? 0,
-            itemSize: 30,
-            ratingWidget: RatingWidget(
-                full: const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                ),
-                half: const Icon(Icons.star),
-                empty: const Icon(
-                  Icons.star,
-                )),
-            onRatingUpdate: changeRating ?? (_) {}),
+          allowHalfRating: true,
+          ignoreGestures: false,
+          glow: false,
+          itemSize: 30,
+          ratingWidget: RatingWidget(
+              full: Icon(
+                Icons.star,
+                color: starColor,
+              ),
+              half: Icon(
+                Icons.star_half,
+                color: starColor,
+              ),
+              empty: Icon(
+                Icons.star_border,
+                color: starColor,
+              )),
+          onRatingUpdate: (value) {
+            changeRating(text, value);
+          },
+        ),
       ),
     );
   }

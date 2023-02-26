@@ -14,32 +14,32 @@ class RateColumn extends StatelessWidget {
         RatingListTile(
           disable: false,
           text: "Food",
-          rate: 3,
+          // rate: 3,
         ),
         RatingListTile(
           disable: false,
           text: "Staying",
-          rate: 3,
+          // rate: 3,
         ),
         RatingListTile(
           disable: false,
           text: "Activities",
-          rate: 3,
+          // rate: 3,
         ),
         RatingListTile(
           disable: false,
           text: "Transportation",
-          rate: 3,
+          // rate: 3,
         ),
         RatingListTile(
           disable: false,
           text: "Nature",
-          rate: 3,
+          // rate: 3,
         ),
         RatingListTile(
           disable: false,
           text: "Pricing",
-          rate: 3,
+          // rate: 3,
         ),
       ],
     );
