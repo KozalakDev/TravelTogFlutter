@@ -28,8 +28,7 @@ class DatabaseService {
   //   }
   // }
 
-  Future<bool> createPost(
-      String title, String description, List<XFile> images) async {
+  Future<bool> createPost(String title, List<XFile> images) async {
     var url = Uri.http('127.0.0.1:8080', 'api/v1/post/create');
 
     List<String> imageURLs = [];
@@ -57,7 +56,7 @@ class DatabaseService {
         },
         body: json.encode({
           'title': title,
-          'description': description,
+          // 'description': description,
           'imageURLs': imageURLs
         }));
     print('Response status: ${response.statusCode}');
