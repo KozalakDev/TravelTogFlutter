@@ -3,11 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:team_project_1/consts.dart';
 import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
 import 'package:team_project_1/screens/detail/components/comment.dart';
 
 import '../../size_config.dart';
+
+import 'components/ratings_column.dart';
 
 class DetailScreen extends StatelessWidget {
   DetailScreen({super.key});
