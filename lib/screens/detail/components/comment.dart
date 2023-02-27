@@ -41,13 +41,10 @@ class Comment extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: Text(
-                      "This is 💯 one hundred percent the best lip mask duo ever !!!",
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          GoogleFonts.lato(color: Colors.black, fontSize: 12),
-                    ),
+                  Text(
+                    "This is 💯 one percent the best lip mask duo ever !!!",
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.lato(color: Colors.black, fontSize: 12),
                   )
                 ],
               )
