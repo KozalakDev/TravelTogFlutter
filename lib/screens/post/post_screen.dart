@@ -17,7 +17,7 @@ class PostPage extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: 5,
           itemBuilder: (context, index) {
-            return const PostContainer();
+            return PostContainer();
           },
         ),
         // CarouselSlider(

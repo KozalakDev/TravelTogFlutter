@@ -6,6 +6,7 @@ import 'package:team_project_1/consts.dart';
 class RatingListTile extends StatelessWidget {
   RatingListTile(
       {super.key,
+      this.rate,
       required this.text,
       required this.disable,
       required this.changeRating});

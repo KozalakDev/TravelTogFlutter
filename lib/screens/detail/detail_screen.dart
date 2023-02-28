@@ -1,13 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:team_project_1/consts.dart';
 import 'package:team_project_1/screens/post/components/image_slider.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
+import 'package:team_project_1/screens/detail/components/comment.dart';
+
+import '../../size_config.dart';
 
 import 'components/ratings_column.dart';
 
@@ -23,13 +24,15 @@ class DetailScreen extends StatelessWidget {
     'Pricing': 5.0
   };
 
+  final CarouselController carouselController = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
-          color: Color.fromRGBO(0, 0, 0, 245)),
+          color: Color.fromRGBO(255, 255, 255, 100)),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,9 +47,47 @@ class DetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 30),
-              // child: CarouselSlider(),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                      width: SizeConfig.screenWidth! * 4.5 / 4 - 15,
+                      height: SizeConfig.screenHeight! / 4,
+                      child: ImageSlider(
+                        carouselController: carouselController,
+                        vpf: 0.73,
+                      )),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: CupertinoButton(
+                      padding: EdgeInsets.all(0),
+                      onPressed: () {
+                        carouselController.nextPage();
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        size: 50,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.all(0),
+                        onPressed: () {
+                          carouselController.previousPage();
+                        },
+                        child: Icon(
+                          Icons.keyboard_arrow_left_rounded,
+                          size: 50,
+                          color: Colors.black54,
+                        ),
+                      )),
+                ],
+              ),
             ),
             Column(
               children: [
@@ -73,8 +114,42 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             Padding(
+              padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
+              child: Row(
+                children: [
+                  Text("Ratings",
+                      style: GoogleFonts.montserrat(
+                          fontSize: 16, fontWeight: FontWeight.w600)),
+                ],
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: RatingsColumn(ratingsMap: ratingsMap),
+              child: Column(
+                  children: ratingsMap.entries.map((entry) {
+                return RatingListTile(
+                  text: entry.key,
+                  disable: true,
+                  rate: entry.value / 2,
+                  changeRating: (String, double) {},
+                );
+              }).toList()),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  Text("Comments",
+                      style: GoogleFonts.montserrat(
+                          fontSize: 16, fontWeight: FontWeight.w600)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Column(
+                children: [Comment(), Comment(), Comment()],
+              ),
             )
           ],
         ),
