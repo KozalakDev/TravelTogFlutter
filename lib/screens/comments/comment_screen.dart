@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -42,6 +44,40 @@ class CommentScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Comment();
                   })),
+          Card(
+            margin: EdgeInsetsDirectional.all(0),
+            color: Colors.transparent,
+            elevation: 0,
+            child: ListTile(
+              horizontalTitleGap: 0,
+              contentPadding: EdgeInsets.symmetric(horizontal: 20),
+              leading: CircleAvatar(
+                radius: 15,
+                foregroundImage: AssetImage("assets/images/ca.png"),
+              ),
+              title: SizedBox(
+                height: 40,
+                child: TextField(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: InputDecoration(
+                      hintText: "Describe your idea...",
+                      hintStyle: TextStyle(fontSize: 13),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(173, 173, 173, 100)),
+                          gapPadding: 0,
+                          borderRadius: BorderRadius.circular(15)),
+                      border: OutlineInputBorder(
+                          gapPadding: 0,
+                          borderRadius: BorderRadius.circular(15))),
+                ),
+              ),
+              trailing: Transform.rotate(
+                  angle: 5.5,
+                  child: IconButton(
+                      onPressed: () {}, icon: Icon(Icons.send_rounded))),
+            ),
+          )
         ],
       ),
     );
