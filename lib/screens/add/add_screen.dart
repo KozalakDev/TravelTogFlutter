@@ -115,7 +115,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w600, fontSize: 20),
                         ),
-                        // subtitle: LocationPicker(),
+                        // subtitle: const LocationPicker(),
                       ),
                       Column(
                         children: [

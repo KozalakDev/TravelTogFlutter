@@ -29,7 +29,8 @@ environment:
 dependencies:
   carousel_slider: ^4.2.1
   cloudinary: ^1.1.0
-  csc_picker: ^0.2.7
+  csc_picker:
+    path: /Users/ferhataksoy/vs_code/csc_picker
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter

@@ -14,7 +14,7 @@ class _LocationPickerState extends State<LocationPicker> {
   String countryValue = "";
   String stateValue = "";
   String cityValue = "";
-  String address = "";
+  // String address = "";
 
   @override
   Widget build(BuildContext context) {
