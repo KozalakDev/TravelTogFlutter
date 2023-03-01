@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:like_button/like_button.dart';
+import 'package:team_project_1/screens/comments/comment_screen.dart';
+import 'package:team_project_1/size_config.dart';
 
 class InterractionsRow extends StatefulWidget {
   const InterractionsRow({
@@ -45,15 +47,18 @@ class _InterractionsRowState extends State<InterractionsRow> {
             color: Colors.black54,
           ),
           onPressed: () {
-            // showModalBottomSheet(
-            // context: context,
-            // isScrollControlled: true,
-            // useSafeArea: true,
-            // shape: const RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-            // builder: (context) {
-            //   return CommnentScreen();
-            // });
+            showModalBottomSheet(
+                constraints: BoxConstraints.tightFor(
+                    height: MediaQuery.of(context).size.height / 2),
+                isScrollControlled: true,
+                useSafeArea: true,
+                context: context,
+                shape: const RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(30))),
+                builder: (context) {
+                  return CommentScreen();
+                });
           },
         ),
         const Spacer(),
