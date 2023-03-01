@@ -52,9 +52,12 @@ class DetailScreen extends StatelessWidget {
                   SizedBox(
                       width: SizeConfig.screenWidth! * 4.5 / 4 - 15,
                       height: SizeConfig.screenHeight! / 4,
-                      child: ImageSlider(
-                        carouselController: carouselController,
-                        vpf: 0.73,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.5),
+                        child: ImageSlider(
+                          carouselController: carouselController,
+                          vpf: 0.73,
+                        ),
                       )),
                   Align(
                     alignment: Alignment.centerRight,
@@ -145,7 +148,7 @@ class DetailScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 5),
               child: Column(
-                children: [Comment(),Comment()],
+                children: [Comment(), Comment()],
               ),
             )
           ],

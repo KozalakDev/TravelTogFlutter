@@ -27,7 +27,7 @@ class RatingListTile extends StatelessWidget {
         ),
         trailing: RatingBar(
           allowHalfRating: true,
-          ignoreGestures: false,
+          ignoreGestures: disable,
           glow: false,
           itemSize: 30,
           ratingWidget: RatingWidget(
