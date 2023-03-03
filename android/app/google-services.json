@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:396742455026:android:11a354a5f253f0bb31ea6b",
+        "mobilesdk_app_id": "1:396742455026:android:9b78b568023dfd8a31ea6b",
         "android_client_info": {
-          "package_name": "com.example.team_project_1"
+          "package_name": "com.kozalakdev.travelTog"
         }
       },
       "oauth_client": [
         {
-          "client_id": "396742455026-nd8erbv6irg5k69nlibb6ldc2a1tm90p.apps.googleusercontent.com",
+          "client_id": "396742455026-lbba5hfg2rsv5478q5fte9n955c7hnd5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +27,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "396742455026-nd8erbv6irg5k69nlibb6ldc2a1tm90p.apps.googleusercontent.com",
+              "client_id": "396742455026-lbba5hfg2rsv5478q5fte9n955c7hnd5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
