@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_project_1/routes.dart';
-import 'package:team_project_1/screens/comments/comment_screen.dart';
 import 'package:team_project_1/screens/login/login_screen.dart';
-import 'screens/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+import 'package:team_project_1/screens/home/home_screen.dart';
 import 'package:team_project_1/size_config.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -26,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Text("Sign In",
                           style: GoogleFonts.montserrat(
-                              color: Color.fromRGBO(248, 152, 128, 1),
+                              color: Color.fromRGBO(245, 127, 90, 1),
                               fontSize: 40)),
                     ],
                   ),
@@ -58,42 +60,76 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15))),
                   ),
                   SizedBox(
-                    height: 5,
-                  ),
-                  SignInButton(Buttons.google, onPressed: () {}),
-                  SignInButton(Buttons.apple, onPressed: () {}),
-                  SignInButton(Buttons.facebookNew, onPressed: () {}),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Forgot Password"),
-                      TextButton(
-                          onPressed: () {},
-                          child: Text("Reset Password",
-                              style: GoogleFonts.montserrat(
-                                  color: Color.fromRGBO(248, 152, 128, 1),
-                                  fontWeight: FontWeight.w600)))
-                    ],
+                    height: 10,
                   ),
                   Container(
-                      width: MediaQuery.of(context).size.width / 1.3,
-                      child: FilledButton(
-                        onPressed: () {},
-                        child: Text("Sign In"),
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(
-                                Color.fromRGBO(248, 152, 128, 1))),
-                      )),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    child: RoundedLoadingButton(
+                      duration: Duration(seconds: 3),
+                      color: Color.fromRGBO(245, 127, 90, 1),
+                      controller: RoundedLoadingButtonController(),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return HomeScreen();
+                        }));
+                      },
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Forgot Password"),
                       TextButton(
-                          onPressed: () {},
-                          child: Text("Reset Password",
-                              style: GoogleFonts.montserrat(
-                                  color: Color.fromRGBO(248, 152, 128, 1),
-                                  fontWeight: FontWeight.w600)))
+                        onPressed: () {},
+                        child: Text(
+                          "Reset Password",
+                          style: GoogleFonts.montserrat(
+                              color: Color.fromRGBO(248, 152, 128, 1),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
+                    ],
+                  ),
+                  SignInButton(
+                    Buttons.google,
+                    onPressed: () {},
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(width: 0.3),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SignInButton(
+                    Buttons.apple,
+                    onPressed: () {},
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(width: 0.3),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SignInButton(
+                    Buttons.facebookNew,
+                    onPressed: () {},
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(width: 0.3),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("You didn't"),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "sign up ?",
+                          style: GoogleFonts.montserrat(
+                              color: Color.fromRGBO(248, 152, 128, 1),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
                     ],
                   ),
                 ],
