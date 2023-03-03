@@ -89,6 +89,9 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Text("Forgot Password ?"),
                         TextButton(
+                          style: ButtonStyle(
+                              overlayColor: MaterialStateProperty.all(
+                                  Colors.transparent)),
                           onPressed: () {
                             showModalBottomSheet(
                                 constraints: BoxConstraints.tightFor(
@@ -139,6 +142,9 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Text("You didn't"),
                         TextButton(
+                          style: ButtonStyle(
+                              overlayColor: MaterialStateProperty.all(
+                                  Colors.transparent)),
                           onPressed: () {
                             showModalBottomSheet(
                                 shape: RoundedRectangleBorder(
