@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:team_project_1/screens/home/home_screen.dart';
+import 'package:team_project_1/screens/login/components/reset_password.dart';
+import 'package:team_project_1/screens/login/components/sign_up.dart';
 import 'package:team_project_1/size_config.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -85,9 +87,23 @@ class LoginScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Forgot Password"),
+                        Text("Forgot Password ?"),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showModalBottomSheet(
+                                constraints: BoxConstraints.tightFor(
+                                    height:
+                                        MediaQuery.of(context).size.height / 2),
+                                isScrollControlled: true,
+                                useSafeArea: true,
+                                context: context,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(30))),
+                                builder: (context) {
+                                  return ResetPassword();
+                                });
+                          },
                           child: Text(
                             "Reset Password",
                             style: GoogleFonts.montserrat(
@@ -123,7 +139,21 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Text("You didn't"),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(30))),
+                                constraints: BoxConstraints.tightFor(
+                                    height: MediaQuery.of(context).size.height /
+                                        1.3),
+                                isScrollControlled: true,
+                                useSafeArea: true,
+                                context: context,
+                                builder: (context) {
+                                  return SignUp();
+                                });
+                          },
                           child: Text(
                             "sign up ?",
                             style: GoogleFonts.montserrat(
