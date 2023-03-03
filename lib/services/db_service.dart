@@ -9,7 +9,8 @@ import '../signedConfig.dart';
 class DatabaseService {
   final cloudinary = SignedConfig().cloudinary;
 
-  // Future<List<Category>> getCategories() async {
+//TODO: use pagination
+  // Future<List<Category>> getPosts() async {
   //   final response =
   //       await http.get(Uri.parse('http://10.91.116.147:3000/categories'));
   //   final responseBody = response.body;
@@ -28,26 +29,31 @@ class DatabaseService {
   //   }
   // }
 
-  Future<bool> createPost(String title, List<XFile> images) async {
+//TODO: create new function for saving images to firebase
+
+  Future<bool> createPost(
+    String title,
+    // List<XFile> images
+  ) async {
     var url = Uri.http('127.0.0.1:8080', 'api/v1/post/create');
 
     List<String> imageURLs = [];
-    await Future.forEach(images, (XFile image) async {
-      await cloudinary
-          .upload(
-              file: image.path,
-              fileBytes: File(image.path).readAsBytesSync(),
-              resourceType: CloudinaryResourceType.image,
-              fileName: image.name,
-              progressCallback: (count, total) {
-                print('Uploading image from file with progress: $count/$total');
-              })
-          .then((value) {
-        if (value.isSuccessful) {
-          imageURLs.add(value.secureUrl!);
-        }
-      });
-    });
+    // await Future.forEach(images, (XFile image) async {
+    //   await cloudinary
+    //       .upload(
+    //           file: image.path,
+    //           fileBytes: File(image.path).readAsBytesSync(),
+    //           resourceType: CloudinaryResourceType.image,
+    //           fileName: image.name,
+    //           progressCallback: (count, total) {
+    //             print('Uploading image from file with progress: $count/$total');
+    //           })
+    //       .then((value) {
+    //     if (value.isSuccessful) {
+    //       imageURLs.add(value.secureUrl!);
+    //     }
+    //   });
+    // });
 
     var response = await http.post(url,
         headers: {
@@ -55,9 +61,10 @@ class DatabaseService {
           "content-type": "application/json"
         },
         body: json.encode({
-          'title': title,
+          // 'title': title,
           // 'description': description,
-          'imageURLs': imageURLs
+          'imageURLs': ["image1", "image2"],
+          'traveller_id': "travellerId"
         }));
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
