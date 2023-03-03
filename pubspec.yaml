@@ -32,6 +32,7 @@ dependencies:
   csc_picker:
     path: /Users/ferhataksoy/vs_code/csc_picker
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.2.9
   flutter:
     sdk: flutter
   flutter_animated_icons: ^1.0.1
