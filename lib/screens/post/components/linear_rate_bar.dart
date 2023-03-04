@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:team_project_1/consts.dart';
-import 'package:team_project_1/size_config.dart';
+import 'package:travel_tog/consts.dart';
+import 'package:travel_tog/size_config.dart';
 
 class LinearRateBar extends StatelessWidget {
   const LinearRateBar({super.key, this.icon, required this.rate});

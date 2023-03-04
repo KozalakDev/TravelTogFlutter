@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team_project_1/routes.dart';
+import 'package:travel_tog/routes.dart';
 
 import 'components/post_container.dart';
 

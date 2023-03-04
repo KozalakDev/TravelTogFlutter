@@ -5,11 +5,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-import 'package:team_project_1/screens/home/home_screen.dart';
-import 'package:team_project_1/services/auth_service.dart';
-import 'package:team_project_1/screens/login/components/reset_password.dart';
-import 'package:team_project_1/screens/login/components/sign_up.dart';
-import 'package:team_project_1/size_config.dart';
+import 'package:travel_tog/screens/home/home_screen.dart';
+import 'package:travel_tog/services/auth_service.dart';
+import 'package:travel_tog/screens/login/components/reset_password.dart';
+import 'package:travel_tog/screens/login/components/sign_up.dart';
+import 'package:travel_tog/size_config.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

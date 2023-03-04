@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:team_project_1/routes.dart';
-import 'package:team_project_1/screens/login/login_screen.dart';
+import 'package:travel_tog/routes.dart';
+import 'package:travel_tog/screens/login/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

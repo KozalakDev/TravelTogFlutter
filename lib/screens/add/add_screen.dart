@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:team_project_1/consts.dart';
-import 'package:team_project_1/screens/components/rating_list_tile.dart';
-import 'package:team_project_1/size_config.dart';
+import 'package:travel_tog/consts.dart';
+import 'package:travel_tog/screens/components/rating_list_tile.dart';
+import 'package:travel_tog/size_config.dart';
 
 import '../../services/db_service.dart';
 
