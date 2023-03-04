@@ -33,45 +33,34 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Scaffold(
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: Colors.orangeAccent,
-                onPressed: () {
-                  Navigator.pushNamed(context, addRouteName);
-                },
-                child: const Icon(Icons.add),
-              ),
-              appBar: HomePageAppBar().appBar,
-              bottomNavigationBar: BottomNavigationBar(
-                selectedItemColor: Colors.orangeAccent,
-                items: const [
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.home), label: "Home"),
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.search), label: "Search"),
-                ],
-                currentIndex: selectedIndex,
-                onTap: (index) {
-                  setState(() {
-                    selectPage(index);
-                  });
-                },
-              ),
-              body: SafeArea(
-                left: false,
-                right: false,
-                child: pages.elementAt(selectedIndex),
-              ),
-            );
-          }
 
-          else{
-            return LoginScreen();
-          }
-        });
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.orangeAccent,
+        onPressed: () {
+          Navigator.pushNamed(context, addRouteName);
+        },
+        child: const Icon(Icons.add),
+      ),
+      appBar: HomePageAppBar().appBar,
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.orangeAccent,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+        ],
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectPage(index);
+          });
+        },
+      ),
+      body: SafeArea(
+        left: false,
+        right: false,
+        child: pages.elementAt(selectedIndex),
+      ),
+    );
   }
 }
