@@ -64,32 +64,29 @@ class _CommentState extends State<Comment> {
               )
             ],
           ),
-          Stack(alignment: Alignment.center, children: [
-            IconButton(
-                visualDensity: VisualDensity.compact,
-                onPressed: () {
-                  setState(() {
-                    isLiked = !isLiked;
-                    if (isLiked) {
-                      counter++;
-                    } else {
-                      counter--;
-                    }
+          IconButton(
+              visualDensity: VisualDensity.compact,
+              onPressed: () {
+                setState(() {
+                  isLiked = !isLiked;
+                  if (isLiked) {
+                    counter++;
+                  } else {
+                    counter--;
+                  }
 
-                    print(isLiked);
-                  });
-                },
-                icon: isLiked
-                    ? Icon(
-                        Icons.favorite_rounded,
-                        color: Colors.redAccent,
-                      )
-                    : Icon(
-                        Icons.favorite_border_rounded,
-                        color: Colors.black,
-                      )),
-            Text(counter.toString())
-          ]),
+                  print(isLiked);
+                });
+              },
+              icon: isLiked
+                  ? Icon(
+                      Icons.favorite_rounded,
+                      color: Colors.redAccent,
+                    )
+                  : Icon(
+                      Icons.favorite_border_rounded,
+                      color: Colors.black,
+                    )),
         ],
       ),
     );
