@@ -55,7 +55,7 @@ class AuthService {
 
       // Once signed in, return the UserCredential
       final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
+          await _firebaseAuth.signInWithCredential(credential);
 
       // DatabaseService(_firebaseAuth).updateUserData();
 

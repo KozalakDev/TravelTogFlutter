@@ -5,6 +5,8 @@ import 'package:travel_tog/routes.dart';
 import 'package:travel_tog/screens/home/home_screen.dart';
 import 'package:travel_tog/screens/login/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:travel_tog/services/auth_service.dart';
+import 'package:travel_tog/services/service_locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +36,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseAuth.instance.authStateChanges(),
+      stream: getIt.get<AuthService>().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return HomeScreen();
