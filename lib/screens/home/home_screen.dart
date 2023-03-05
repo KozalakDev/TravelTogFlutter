@@ -1,8 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project_1/routes.dart';
-import 'package:team_project_1/screens/add/add_screen.dart';
-import 'package:team_project_1/screens/post/components/post_container.dart';
 import 'package:team_project_1/screens/post/post_screen.dart';
 import 'package:team_project_1/screens/search/search_screen.dart';
 import 'package:team_project_1/size_config.dart';

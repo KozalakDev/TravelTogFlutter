@@ -6,7 +6,6 @@ import 'package:team_project_1/consts.dart';
 import 'package:team_project_1/screens/components/rating_list_tile.dart';
 import 'package:team_project_1/size_config.dart';
 
-import '../../services/db_service.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});

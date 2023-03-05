@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:team_project_1/screens/home/home_screen.dart';
 import 'package:team_project_1/screens/login/components/reset_password.dart';
 import 'package:team_project_1/screens/login/components/sign_up.dart';
-import 'package:team_project_1/size_config.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -69,7 +65,6 @@ class LoginScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       width: MediaQuery.of(context).size.width / 1.3,
                       child: RoundedLoadingButton(
-                        duration: Duration(seconds: 3),
                         color: Color.fromRGBO(245, 127, 90, 1),
                         controller: RoundedLoadingButtonController(),
                         onPressed: () {
@@ -93,19 +88,10 @@ class LoginScreen extends StatelessWidget {
                               overlayColor: MaterialStateProperty.all(
                                   Colors.transparent)),
                           onPressed: () {
-                            showModalBottomSheet(
-                                constraints: BoxConstraints.tightFor(
-                                    height:
-                                        MediaQuery.of(context).size.height / 2),
-                                isScrollControlled: true,
-                                useSafeArea: true,
-                                context: context,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(30))),
-                                builder: (context) {
-                                  return ResetPassword();
-                                });
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ResetPassword();
+                            }));
                           },
                           child: Text(
                             "Reset Password",
@@ -146,19 +132,10 @@ class LoginScreen extends StatelessWidget {
                               overlayColor: MaterialStateProperty.all(
                                   Colors.transparent)),
                           onPressed: () {
-                            showModalBottomSheet(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(30))),
-                                constraints: BoxConstraints.tightFor(
-                                    height: MediaQuery.of(context).size.height /
-                                        1.3),
-                                isScrollControlled: true,
-                                useSafeArea: true,
-                                context: context,
-                                builder: (context) {
-                                  return SignUp();
-                                });
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SignUp();
+                            }));
                           },
                           child: Text(
                             "sign up ?",

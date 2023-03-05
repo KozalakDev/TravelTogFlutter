@@ -11,7 +11,6 @@ import 'linear_rate_bar.dart';
 class PostContainer extends StatelessWidget {
   PostContainer({super.key});
 
-
   final CarouselController carouselController = CarouselController();
 
   @override
@@ -148,7 +147,9 @@ class PostContainer extends StatelessWidget {
                         SizedBox(
                             width: SizeConfig.screenWidth! * 3.5 / 5 - 15,
                             // height: SizeConfig.screenHeight! / 4,
-                            child: ImageSlider(carouselController:carouselController ,)),
+                            child: ImageSlider(
+                              carouselController: carouselController,
+                            )),
                       ],
                     ),
                   ),

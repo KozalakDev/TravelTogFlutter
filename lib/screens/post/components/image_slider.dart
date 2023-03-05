@@ -30,7 +30,7 @@ class ImageSlider extends StatelessWidget {
         return Builder(
           builder: (context) {
             return ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(12.5)),
               child: Image.asset(
                 "assets/images/$e.png",
                 fit: BoxFit.cover,
@@ -43,7 +43,7 @@ class ImageSlider extends StatelessWidget {
       }).toList(),
       options: CarouselOptions(
         // clipBehavior: Clip.hardEdge,
-        viewportFraction: this.vpf ?? 1,
+        viewportFraction: vpf ?? 1,
         aspectRatio: 4 / 3,
         // autoPlayCurve: Curves.easeOutQuart,
         // enlargeFactor: 0.3,
