@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.team_project_1">
+    package="com.kozalakdev.travelTog">
     <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
    <application
-        android:label="team_project_1"
+        android:label="Travel Tog"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

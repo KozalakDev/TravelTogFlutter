@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:team_project_1/consts.dart';
+import 'package:travel_tog/consts.dart';
 
 class RatingsColumn extends StatelessWidget {
   const RatingsColumn({

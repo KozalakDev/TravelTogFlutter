@@ -2,11 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-import 'package:team_project_1/screens/home/home_screen.dart';
-import 'package:team_project_1/screens/login/components/reset_password.dart';
-import 'package:team_project_1/screens/login/components/sign_up.dart';
+import 'package:travel_tog/screens/home/home_screen.dart';
+import 'package:travel_tog/services/auth_service.dart';
+import 'package:travel_tog/screens/login/components/reset_password.dart';
+import 'package:travel_tog/screens/login/components/sign_up.dart';
+import 'package:travel_tog/size_config.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController? mailController;
+  TextEditingController? passwordController;
+  final authService =
+      AuthService(); //TODO: use getit if u need to use it outsie this file
+
+  @override
+  void initState() {
+    super.initState();
+
+    mailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    mailController?.dispose();
+    passwordController?.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,6 +63,7 @@ class LoginScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       child: TextFormField(
+                        controller: mailController,
                         decoration: InputDecoration(
                             hintText: "E-mail",
                             enabledBorder: OutlineInputBorder(
@@ -47,6 +77,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     TextFormField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                           hintText: "Password",
                           enabledBorder: OutlineInputBorder(
@@ -68,10 +99,8 @@ class LoginScreen extends StatelessWidget {
                         color: Color.fromRGBO(245, 127, 90, 1),
                         controller: RoundedLoadingButtonController(),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return HomeScreen();
-                          }));
+                          authService.registerWithEmailAndPassword(
+                              mailController!.text, passwordController!.text);
                         },
                         child: Text(
                           "Sign In",
@@ -104,7 +133,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SignInButton(
                       Buttons.google,
-                      onPressed: () {},
+                      onPressed: () async {
+                        await authService.signInWithGoogle();
+                      },
                       shape: OutlineInputBorder(
                           borderSide: BorderSide(width: 0.3),
                           borderRadius: BorderRadius.circular(20)),

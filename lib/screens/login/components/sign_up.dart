@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-
+import 'package:travel_tog/screens/login/components/reset_password.dart';
 import '../../home/home_screen.dart';
 
 class SignUp extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:team_project_1/screens/comments/components/comment.dart';
+import 'package:travel_tog/screens/comments/components/comment.dart';
 
 class CommentScreen extends StatelessWidget {
   const CommentScreen({super.key});

@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:team_project_1/screens/post/components/image_slider.dart';
-import 'package:team_project_1/screens/detail/detail_screen.dart';
-import 'package:team_project_1/consts.dart' as constants;
-import 'package:team_project_1/size_config.dart';
+import 'package:travel_tog/screens/post/components/image_slider.dart';
+import 'package:travel_tog/screens/detail/detail_screen.dart';
+import 'package:travel_tog/consts.dart' as constants;
+import 'package:travel_tog/size_config.dart';
 
 import 'interractions_row.dart';
 import 'linear_rate_bar.dart';

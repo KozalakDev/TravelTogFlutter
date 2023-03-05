@@ -1,4 +1,4 @@
-name: team_project_1
+name: travel_tog
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -16,7 +16,6 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.17.6 <3.0.0"
 
@@ -28,14 +27,19 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
+  cloud_firestore: ^4.4.3
   cloudinary: ^1.1.0
-  csc_picker: ^0.2.7
+  csc_picker:
+    path: /Users/ferhataksoy/vs_code/csc_picker
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.2.9
   flutter:
     sdk: flutter
   flutter_animated_icons: ^1.0.1
   flutter_rating_bar: ^4.0.1
+  get_it: ^7.2.0
   google_fonts: ^4.0.3
+  google_sign_in: ^6.0.2
   http: ^0.13.5
   image_cropper: ^3.0.1
   image_picker: ^0.8.6+1
@@ -45,6 +49,7 @@ dependencies:
   sign_in_button: ^3.1.0
 
 dev_dependencies:
+  change_app_package_name: ^1.1.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

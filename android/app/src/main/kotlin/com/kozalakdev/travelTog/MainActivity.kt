@@ -1,4 +1,4 @@
-package com.example.team_project_1
+package com.kozalakdev.travelTog
 
 import io.flutter.embedding.android.FlutterActivity
 

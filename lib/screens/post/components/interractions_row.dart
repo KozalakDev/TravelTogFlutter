@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:team_project_1/screens/comments/comment_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
+import 'package:travel_tog/screens/comments/comment_screen.dart';
+import 'package:travel_tog/size_config.dart';
 
 class InterractionsRow extends StatefulWidget {
   const InterractionsRow({

@@ -1,8 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:team_project_1/routes.dart';
-import 'package:team_project_1/screens/login/login_screen.dart';
+import 'package:travel_tog/routes.dart';
+import 'package:travel_tog/screens/home/home_screen.dart';
+import 'package:travel_tog/screens/login/login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:travel_tog/services/auth_service.dart';
+import 'package:travel_tog/services/service_locator.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -18,6 +26,24 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: LoginScreen());
+        home: MainPage());
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: getIt.get<AuthService>().authStateChanges,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return HomeScreen();
+        } else {
+          return LoginScreen();
+        }
+      },
+    );
   }
 }

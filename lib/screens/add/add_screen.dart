@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:team_project_1/consts.dart';
-import 'package:team_project_1/screens/components/rating_list_tile.dart';
-import 'package:team_project_1/size_config.dart';
+import 'package:travel_tog/consts.dart';
+import 'package:travel_tog/screens/components/rating_list_tile.dart';
+import 'package:travel_tog/size_config.dart';
 
 
 class AddPostScreen extends StatefulWidget {
@@ -15,7 +15,7 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
-  List<XFile>? images = [];
+  // List<XFile>? images = [];
   final Map<String, double> ratingsMap = {
     'Food': 0,
     'Staying': 0,
@@ -25,19 +25,32 @@ class _AddPostScreenState extends State<AddPostScreen> {
     'Pricing': 0
   };
 
-  Future pickImages() async {
-    try {
-      final List<XFile> imagesTemp = await ImagePicker().pickMultiImage();
-      // if (imagesTemp.isNotEmpty) {
-      //   images!.addAll(imagesTemp);
-      // }
-      if (imagesTemp.isNotEmpty) {
-        setState(() => images = imagesTemp);
-      }
-    } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
-    }
+  TextEditingController? textEditingController;
+
+  @override
+  void initState() {
+    super.initState();
+    textEditingController = TextEditingController();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    textEditingController?.dispose();
+  }
+  // Future pickImages() async {
+  //   try {
+  //     final List<XFile> imagesTemp = await ImagePicker().pickMultiImage();
+  //     // if (imagesTemp.isNotEmpty) {
+  //     //   images!.addAll(imagesTemp);
+  //     // }
+  //     if (imagesTemp.isNotEmpty) {
+  //       setState(() => images = imagesTemp);
+  //     }
+  //   } on PlatformException catch (e) {
+  //     print('Failed to pick image: $e');
+  //   }
+  // }
 
   void changeRating(String field, double value) {
     ratingsMap[field] = value;
@@ -45,8 +58,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController? textEditingController;
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -114,7 +125,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w600, fontSize: 20),
                         ),
-                        // subtitle: LocationPicker(),
+                        // subtitle: const LocationPicker(),
                       ),
                       Column(
                         children: [
@@ -140,9 +151,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                                 backgroundColor: primaryColor,
                               ),
                               onPressed: () async {
-                                // await DatabaseService().createPost(
-                                //     textEditingController!.text, images!);
-                                print(ratingsMap);
+                                await DatabaseService()
+                                    .createPost(textEditingController!.text);
+                                // print(ratingsMap);
                               },
                               child: const Text('Publish Post'),
                             ),

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:team_project_1/size_config.dart';
+import 'package:travel_tog/size_config.dart';
 
 class ImageSlider extends StatelessWidget {
   ImageSlider({
