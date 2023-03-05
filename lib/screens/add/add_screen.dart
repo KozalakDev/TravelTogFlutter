@@ -6,7 +6,6 @@ import 'package:travel_tog/consts.dart';
 import 'package:travel_tog/screens/components/rating_list_tile.dart';
 import 'package:travel_tog/size_config.dart';
 
-import '../../services/db_service.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import 'package:travel_tog/screens/post/components/post_container.dart';
 import 'package:travel_tog/screens/post/post_screen.dart';
 import 'package:travel_tog/screens/search/search_screen.dart';
 import 'package:travel_tog/size_config.dart';
-
 import 'components/appbar.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sign_in_button/sign_in_button.dart';
@@ -37,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     mailController?.dispose();
     passwordController?.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +96,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       width: MediaQuery.of(context).size.width / 1.3,
                       child: RoundedLoadingButton(
-                        duration: Duration(seconds: 3),
                         color: Color.fromRGBO(245, 127, 90, 1),
                         controller: RoundedLoadingButtonController(),
                         onPressed: () {
@@ -120,19 +117,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               overlayColor: MaterialStateProperty.all(
                                   Colors.transparent)),
                           onPressed: () {
-                            showModalBottomSheet(
-                                constraints: BoxConstraints.tightFor(
-                                    height:
-                                        MediaQuery.of(context).size.height / 2),
-                                isScrollControlled: true,
-                                useSafeArea: true,
-                                context: context,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(30))),
-                                builder: (context) {
-                                  return ResetPassword();
-                                });
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ResetPassword();
+                            }));
                           },
                           child: Text(
                             "Reset Password",
@@ -175,19 +163,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               overlayColor: MaterialStateProperty.all(
                                   Colors.transparent)),
                           onPressed: () {
-                            showModalBottomSheet(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(30))),
-                                constraints: BoxConstraints.tightFor(
-                                    height: MediaQuery.of(context).size.height /
-                                        1.3),
-                                isScrollControlled: true,
-                                useSafeArea: true,
-                                context: context,
-                                builder: (context) {
-                                  return SignUp();
-                                });
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SignUp();
+                            }));
                           },
                           child: Text(
                             "sign up ?",

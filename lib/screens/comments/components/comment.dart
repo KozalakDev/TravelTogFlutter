@@ -75,7 +75,6 @@ class _CommentState extends State<Comment> {
                     counter--;
                   }
 
-                  print(isLiked);
                 });
               },
               icon: isLiked
