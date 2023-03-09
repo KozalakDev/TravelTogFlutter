@@ -6,6 +6,8 @@ import 'package:travel_tog/consts.dart';
 import 'package:travel_tog/screens/components/rating_list_tile.dart';
 import 'package:travel_tog/size_config.dart';
 
+import '../../services/db_service.dart';
+
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
@@ -15,7 +17,8 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
-  // List<XFile>? images = [];
+  List<XFile>? images = [];
+  
   final Map<String, double> ratingsMap = {
     'Food': 0,
     'Staying': 0,
@@ -38,20 +41,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     super.dispose();
     textEditingController?.dispose();
   }
-  // Future pickImages() async {
-  //   try {
-  //     final List<XFile> imagesTemp = await ImagePicker().pickMultiImage();
-  //     // if (imagesTemp.isNotEmpty) {
-  //     //   images!.addAll(imagesTemp);
-  //     // }
-  //     if (imagesTemp.isNotEmpty) {
-  //       setState(() => images = imagesTemp);
-  //     }
-  //   } on PlatformException catch (e) {
-  //     print('Failed to pick image: $e');
-  //   }
-  // }
-
+ 
   void changeRating(String field, double value) {
     ratingsMap[field] = value;
   }

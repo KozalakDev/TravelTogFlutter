@@ -8,6 +8,8 @@ import 'package:travel_tog/screens/login/components/reset_password.dart';
 import 'package:travel_tog/screens/login/components/sign_up.dart';
 import 'package:travel_tog/size_config.dart';
 
+import '../../services/service_locator.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -16,13 +18,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController? mailController;
   TextEditingController? passwordController;
-  final authService =
-      AuthService(); //TODO: use getit if u need to use it outsie this file
+  final authService = getIt.get<AuthService>();
 
   @override
   void initState() {
     super.initState();
-
     mailController = TextEditingController();
     passwordController = TextEditingController();
   }
@@ -34,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
     mailController?.dispose();
     passwordController?.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Color.fromRGBO(245, 127, 90, 1),
                         controller: RoundedLoadingButtonController(),
                         onPressed: () {
-                          authService.registerWithEmailAndPassword(
+                          authService.signInWithEmailAndPassword(
                               mailController!.text, passwordController!.text);
                         },
                         child: Text(

@@ -9,6 +9,8 @@ import 'package:travel_tog/screens/post/components/post_container.dart';
 import 'package:travel_tog/screens/post/post_screen.dart';
 import 'package:travel_tog/screens/search/search_screen.dart';
 import 'package:travel_tog/size_config.dart';
+import '../../services/auth_service.dart';
+import '../../services/service_locator.dart';
 import 'components/appbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,12 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
+    
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.orangeAccent,
         onPressed: () {
-          Navigator.pushNamed(context, addRouteName);
+          // Navigator.pushNamed(context, addRouteName);
+          getIt.get<AuthService>().signOut(context);
         },
         child: const Icon(Icons.add),
       ),
