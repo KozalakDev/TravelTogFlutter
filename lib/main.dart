@@ -11,6 +11,7 @@ import 'package:travel_tog/services/service_locator.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  setup();
   runApp(const MyApp());
 }
 

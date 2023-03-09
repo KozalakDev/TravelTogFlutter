@@ -8,6 +8,8 @@ import 'package:travel_tog/screens/login/login_screen.dart';
 import 'package:travel_tog/screens/post/components/post_container.dart';
 import 'package:travel_tog/screens/post/post_screen.dart';
 import 'package:travel_tog/screens/search/search_screen.dart';
+import 'package:travel_tog/services/auth_service.dart';
+import 'package:travel_tog/services/service_locator.dart';
 import 'package:travel_tog/size_config.dart';
 import 'components/appbar.dart';
 
@@ -38,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.orangeAccent,
         onPressed: () {
-          Navigator.pushNamed(context, addRouteName);
+          getIt.get<AuthService>().signOut(context);
+          // Navigator.pushNamed(context, addRouteName);
         },
         child: const Icon(Icons.add),
       ),
