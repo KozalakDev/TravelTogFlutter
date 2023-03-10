@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../main.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -13,9 +16,6 @@ class AuthService {
       UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
-      //_firebaseAuth.currentUser.uid = user.uid; //TODO:
-      // DatabaseService(_firebaseAuth)
-      //     .updateUserData(_firebaseAuth.currentUser.uid);
       // DatabaseService(_firebaseAuth).updateUserData();
       print(user);
       return user;
@@ -72,8 +72,8 @@ class AuthService {
       await _firebaseAuth.signOut();
 
       //TODO: go to myapp if you cannot fix error
-      // Navigator.pushReplacement(
-      //     context, MaterialPageRoute(builder: (context) => MyApp()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => MyApp()));
     } catch (error) {
       print(error);
     }

@@ -11,6 +11,8 @@ import 'package:travel_tog/screens/search/search_screen.dart';
 import 'package:travel_tog/services/auth_service.dart';
 import 'package:travel_tog/services/service_locator.dart';
 import 'package:travel_tog/size_config.dart';
+import '../../services/auth_service.dart';
+import '../../services/service_locator.dart';
 import 'components/appbar.dart';
 
 class HomeScreen extends StatefulWidget {

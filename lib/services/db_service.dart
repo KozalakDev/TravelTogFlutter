@@ -1,13 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:cloudinary/cloudinary.dart';
-import 'package:image_picker/image_picker.dart';
-
-import '../signedConfig.dart';
 
 class DatabaseService {
-  final cloudinary = SignedConfig().cloudinary;
 
 //TODO: use pagination
   // Future<List<Category>> getPosts() async {
