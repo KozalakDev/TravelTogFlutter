@@ -35,13 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.orangeAccent,
         onPressed: () {
-          // Navigator.pushNamed(context, addRouteName);
-          getIt.get<AuthService>().signOut(context);
+          Navigator.pushNamed(context, addRouteName);
+          // getIt.get<AuthService>().signOut(context);
         },
         child: const Icon(Icons.add),
       ),

@@ -1,36 +1,32 @@
-// import 'dart:io';
+import 'dart:io';
 
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class ImagePicker extends StatefulWidget {
-//   const ImagePicker({Key? key}) : super(key: key);
+class ImagesGridView extends StatefulWidget {
+  ImagesGridView({Key? key, required this.imageFiles}) : super(key: key);
 
-//   @override
-//   State<ImagePicker> createState() => _ImagePickerState();
-// }
+  List<File?> imageFiles;
+  @override
+  State<ImagesGridView> createState() => _ImagesGridViewState();
+}
 
-// class _ImagePickerState extends State<ImagePicker> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Expanded(
-//           child: Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: GridView.builder(
-//                 // itemCount: imageFileList!.length,
-//                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//                     crossAxisCount: 3),
-//                 itemBuilder: (BuildContext context, int index) {
-//                   return Image.file(
-//                     // File(imageFileList![index].path),
-//                     fit: BoxFit.cover,
-//                   );
-//                 }),
-//           ),
-//         ),
-//         const SizedBox(height: 32),
-//       ],
-//     );
-//   }
-// }
+class _ImagesGridViewState extends State<ImagesGridView> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GridView.builder(
+          physics: const ScrollPhysics(),
+          itemCount: widget.imageFiles.length,
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3),
+          itemBuilder: (BuildContext context, int index) {
+            return Image.file(
+              File(widget.imageFiles[index]!.path),
+              fit: BoxFit.cover,
+            );
+          }),
+    );
+  }
+}
