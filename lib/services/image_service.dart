@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageService {
-  //if image is not 4/3 1/1 crop automatically
+  //TODO: if image is not 4/3 1/1 crop automatically
   Future<List<File>> pickImages() async {
     List<File> croppedImages = [];
     try {
@@ -24,7 +24,7 @@ class ImageService {
         if (croppedImage != null) {
           print("cropped Images: ${croppedImage.path}");
           croppedImages.add(croppedImage);
-        }
+        }  
       }
 
       return croppedImages;

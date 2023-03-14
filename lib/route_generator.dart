@@ -11,6 +11,12 @@ class RouteGenerator {
         );
         break;
 
+      case '/pickImages':
+        return MaterialPageRoute(
+          builder: (_) => const AddPostScreen(),
+        );
+        break;
+
       default:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),

@@ -21,8 +21,6 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
-  List<File> images = [];
-
   final Map<String, double> ratingsMap = {
     'Food': 0,
     'Staying': 0,
@@ -70,24 +68,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        images.isEmpty
-                            ? ElevatedButton.icon(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: primaryColor,
-                                ),
-                                onPressed: () async {
-                                  List<File> tempImages = await getIt
-                                      .get<ImageService>()
-                                      .pickImages();
-                                  setState(() {
-                                    images = tempImages;
-                                  });
-                                },
-                                icon: const Icon(Icons.image),
-                                label: const Text('Pick Images'))
-                            : ImagesGridView(
-                                imageFiles: images,
-                              ),
                         TextFormField(
                           controller: textEditingController,
                           decoration: InputDecoration(
