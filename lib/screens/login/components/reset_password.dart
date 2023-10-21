@@ -4,8 +4,8 @@ import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../../home/home_screen.dart';
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

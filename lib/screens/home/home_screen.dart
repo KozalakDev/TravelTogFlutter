@@ -40,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.orangeAccent,
         onPressed: () {
-          Navigator.pushNamed(context, pickImagesRouteName);
-          // getIt.get<AuthService>().signOut(context);
+          // Navigator.pushNamed(context, pickImagesRouteName);
+          getIt.get<AuthService>().signOut();
         },
         child: const Icon(Icons.add),
       ),
